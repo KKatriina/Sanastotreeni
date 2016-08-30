@@ -22,4 +22,18 @@ public class Vaarinmenneet {
         }
         return false;
     }
+    
+    public void lisaaSanapari(Sanapari sp) {
+        lista.add(sp);
+    }
+    
+    public void poista(Sanapari sp) {
+        if (lista.contains(sp)) {
+            lista.remove(sp);
+        }
+    }
+    
+    public ArrayList<Sanapari> getLista() {
+        return this.lista;
+    }
 }

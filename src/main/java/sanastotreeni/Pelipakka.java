@@ -20,9 +20,23 @@ public class Pelipakka {
         this.pelipakka.add(sp);
     }
     
+    public boolean eiTyhja() {
+        return !pelipakka.isEmpty();
+    }
+    
     public void poistaSanapari(Sanapari sp) {
         if (this.pelipakka.contains(sp)) {
             this.pelipakka.remove(sp);
         }
+    }
+    
+    public HashSet getPakka() {
+        return this.pelipakka;
+    }
+    
+    
+    //eri värillä ne, joissa on tullut virheitä
+    public void esittele() {
+        
     }
 }
