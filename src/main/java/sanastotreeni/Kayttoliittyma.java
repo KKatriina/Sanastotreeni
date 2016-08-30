@@ -22,25 +22,17 @@ import javax.swing.WindowConstants;
 public class Kayttoliittyma implements Runnable {
     
     private JFrame frame;
+    private Kentta kentta;
+    private Peli peli;
     
     public Kayttoliittyma() {
-        
+        this.peli = new Peli();
     }
     
     public void luoKomponentit(Container container) {
-        GridLayout layout = new GridLayout(2,3);
-        container.setLayout(layout);
+        Kentta kentta = new Kentta(container);
         
-        JLabel viesti = new JLabel();
-        JLabel sana1 = new JLabel("Sana1");
-        JTextArea sana2 = new JTextArea();
-        JButton nappi = new JButton("OK!");
-        nappi.addActionListener(new NappaimistonKuuntelija(sana1, sana2));
-        
-        container.add(viesti);
-        container.add(sana1);
-        container.add(sana2);
-        container.add(nappi);
+        container.add(kentta);
         
     }
 
@@ -55,6 +47,8 @@ public class Kayttoliittyma implements Runnable {
 
         frame.pack();
         frame.setVisible(true);
+        
+        this.peli.run();
     }
     
 }

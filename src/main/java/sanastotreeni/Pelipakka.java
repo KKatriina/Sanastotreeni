@@ -35,7 +35,7 @@ public class Pelipakka {
     }
     
     
-    //eri värillä ne, joissa on tullut virheitä
+    //öh - tämä ei voi olla pelipakan tehtävä
     public void esittele() {
         
     }

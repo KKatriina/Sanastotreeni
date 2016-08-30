@@ -15,17 +15,17 @@ import javax.swing.JTextArea;
  * @author Katriina
  */
 public class NappaimistonKuuntelija implements ActionListener {
-    private JLabel sana1;
     private JTextArea sana2;
+    private String verrattava;
     
-    public NappaimistonKuuntelija(JLabel sana1, JTextArea sana2) {
-        this.sana1 = sana1;
+    public NappaimistonKuuntelija(JTextArea sana2, String verrattava) {
         this.sana2 = sana2;
+        this.verrattava = verrattava;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (sana1.getText().equals(sana2.getText())) {
+        if (sana2.getText().equals(verrattava)) {
             System.out.print("Oikein!");
         } else {
             System.out.print("Väärin!");
