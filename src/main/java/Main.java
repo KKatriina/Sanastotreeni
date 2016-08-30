@@ -11,6 +11,7 @@
  * @author Katriina
  */
 import sanastotreeni.*;
+import javax.swing.SwingUtilities;
 
 public class Main {
 
@@ -19,6 +20,10 @@ public class Main {
      */
     public static void main(String[] args) {
         Sanapari sanapari = new Sanapari("one", "yksi");
+        
+        
+        Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
+        SwingUtilities.invokeLater(kayttoliittyma);
     }
     
 }
