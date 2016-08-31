@@ -23,25 +23,26 @@ public class Pelikierros {
         this.kysyja = new Kysyja();
     }
     
-    public void pelaa() {
-        while (pelipakka.eiTyhja()) {
-            naytaSanapari();
-        }
-        pelipakka.esittele();
-    }
+    //onks tämä pelikierroksen tehtävä?
+    //public void pelaa() {
+    //    while (pelipakka.eiTyhja()) {
+    //        annaSanapari();
+    //    }
+    //    pelipakka.esittele();
+    //}
     
-    public void naytaSanapari() {
+    public Sanapari annaSanapari() {
         if (this.valikierroksia%4 != 0) {
             this.valikierroksia++;
-            this.arvoSanapari();
+            return this.arvoSanapari();
         } else {
             this.valikierroksia = 0;
-            this.naytaVaarinmennyt();
+            return this.naytaVaarinmennyt();
         }
     }
     
     //tän voi varmaan tehdä pelipakassa
-    public void arvoSanapari() {
+    public Sanapari arvoSanapari() {
         Random random = new Random();
         int i = random.nextInt(pelipakka.getPakka().size());
         int j = 0;
@@ -52,12 +53,12 @@ public class Pelikierros {
             }
             j++;
         }
-        kysyArvottua(sp);
+        return sp;
     }
     
     
     //tän joko siirtää väärinmennyt-luokalle tai poistaa koko luokan
-    public void naytaVaarinmennyt() {
+    public Sanapari naytaVaarinmennyt() {
         ArrayList<Sanapari> poistettavat = new ArrayList<Sanapari>();
         if (vaarinmenneet.eiTyhja()) {
             for (int i = 0; i < vaarinmenneet.getLista().size(); i++) {
@@ -68,6 +69,9 @@ public class Pelikierros {
             Sanapari sp = poistettavat.get(i);
             vaarinmenneet.poista(sp);
         }
+        
+        //POISTA TÄÄ KUN VOIT
+        return null;
         
     }
     

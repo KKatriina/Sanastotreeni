@@ -5,13 +5,14 @@
  */
 package sanastotreeni;
 
+import java.awt.Container;
 import java.util.ArrayList;
 
 /**
  *
  * @author Katriina
  */
-class Peli implements Runnable {
+class Peli {
     private Pelikierros pelikierros;
     private Pelipakka pelipakka;
     private ArrayList<Sanapari> taysiPakka;
@@ -22,9 +23,13 @@ class Peli implements Runnable {
         this.taysiPakka = new ArrayList<Sanapari>();
     }
 
-    @Override
-    public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    public void pelaa(Kentta kentta, Container container) {
+        
+        while (pelipakka.eiTyhja()) {
+            Sanapari sp = pelikierros.annaSanapari();
+            kentta.asetaPelikentta(sp, container, this);
+        }
     }
     
     

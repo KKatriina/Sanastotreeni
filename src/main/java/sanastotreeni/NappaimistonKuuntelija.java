@@ -17,8 +17,9 @@ import javax.swing.JTextArea;
 public class NappaimistonKuuntelija implements ActionListener {
     private JTextArea sana2;
     private String verrattava;
+    private Peli peli;
     
-    public NappaimistonKuuntelija(JTextArea sana2, String verrattava) {
+    public NappaimistonKuuntelija(JTextArea sana2, String verrattava, Peli peli) {
         this.sana2 = sana2;
         this.verrattava = verrattava;
     }

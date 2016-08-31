@@ -5,6 +5,7 @@
  */
 package sanastotreeni;
 
+import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Frame;
@@ -27,19 +28,17 @@ public class Kayttoliittyma implements Runnable {
     
     public Kayttoliittyma() {
         this.peli = new Peli();
+        this.kentta = new Kentta();
     }
     
     public void luoKomponentit(Container container) {
-        Kentta kentta = new Kentta(container);
-        
         container.add(kentta);
-        
     }
 
     @Override
     public void run() {
         frame = new JFrame("Sanastotreeni");
-        frame.setPreferredSize(new Dimension(200, 100));
+        frame.setPreferredSize(new Dimension(600, 250));
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,7 +47,7 @@ public class Kayttoliittyma implements Runnable {
         frame.pack();
         frame.setVisible(true);
         
-        this.peli.run();
+        this.peli.pelaa(kentta, frame.getContentPane());
     }
     
 }
