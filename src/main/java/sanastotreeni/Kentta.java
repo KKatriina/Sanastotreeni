@@ -8,6 +8,7 @@ package sanastotreeni;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -57,8 +58,10 @@ public class Kentta extends JPanel {
     }
     
     public void asetaPelikentta(Sanapari sp) {
-        container.removeAll();
+        //container.removeAll();
+        System.out.println("mentiin kentälle");
         kentta.removeAll();
+        System.out.println("poistettiin kaikki vanha");
         kentta.setPreferredSize(new Dimension(500, 200));
         GridLayout layout = new GridLayout(2, 2);
         kentta.setLayout(layout);
@@ -75,5 +78,10 @@ public class Kentta extends JPanel {
         kentta.add(sana2);
         
         container.add(kentta, BorderLayout.NORTH);
+        System.out.println("lisättiin uutta");
+        //kentta.repaint();
+        //container.repaint();
+        kentta.validate();
+        container.validate();
     }
 }

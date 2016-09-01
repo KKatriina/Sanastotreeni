@@ -37,6 +37,7 @@ class Peli {
             lopetaPeli();
         } else {                 
             Sanapari sp = pelikierros.annaSanapari();
+            System.out.println("sanapari annettu");
             kentta.asetaPelikentta(sp);
         }
     }
