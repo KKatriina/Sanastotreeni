@@ -21,16 +21,34 @@ import javax.swing.JTextArea;
  */
 public class Kentta extends JPanel {
     private JPanel kentta;
+    private Container container;
+    private Peli peli;
     
     
-    public Kentta() {
+    public Kentta(Container container, Peli peli) {
         this.kentta = new JPanel();
+        this.container = container;
+        this.peli = peli;
     }
     
+    public void asetaAloitusKentta() {
+        kentta.setPreferredSize(new Dimension(500, 200));
+        GridLayout layout = new GridLayout(3,2);
+        kentta.setLayout(layout);
+        
+        JLabel viesti1 = new JLabel("Sana:");
+        JLabel viesti2 = new JLabel("Käännös:");
+        JTextArea sana1 = new JTextArea();
+        JTextArea sana2 = new JTextArea();
+        JButton nappi1 = new JButton("Lisää sanapari");
+        JButton nappi2 = new JButton("Kaikki sanat lisätty!");
+        
+        nappi1.addActionListener(new LisayksenKuuntelija(sana1, sana2, peli));
+        nappi2.addActionListener(new AloituksestaPoistumisenKuuntelija(peli));
+    }
     
-    
-    public void asetaPelikentta(Sanapari sp, Container container, Peli peli) {
-        //container.remove(kentta);
+    public void asetaPelikentta(Sanapari sp) {
+        container.remove(kentta);
         kentta.setPreferredSize(new Dimension(500, 200));
         GridLayout layout = new GridLayout(2, 2);
         kentta.setLayout(layout);
@@ -39,7 +57,7 @@ public class Kentta extends JPanel {
         JLabel sana1 = new JLabel(sp.getSana1());
         JTextArea sana2 = new JTextArea();
         JButton nappi = new JButton("OK!");
-        nappi.addActionListener(new NappaimistonKuuntelija(sana2, sp.getSana2(), peli));
+        nappi.addActionListener(new PelikierroksenKuuntelija(sana2, sp.getSana2(), peli));
         
         kentta.add(viesti);
         kentta.add(nappi);

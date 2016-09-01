@@ -28,7 +28,7 @@ public class Kayttoliittyma implements Runnable {
     
     public Kayttoliittyma() {
         this.peli = new Peli();
-        this.kentta = new Kentta();
+        this.kentta = null;
     }
     
     public void luoKomponentit(Container container) {
@@ -41,13 +41,16 @@ public class Kayttoliittyma implements Runnable {
         frame.setPreferredSize(new Dimension(600, 250));
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        
+        this.kentta = new Kentta(frame.getContentPane(), peli);
+        this.peli.setKentta(kentta);
 
         luoKomponentit(frame.getContentPane());
 
         frame.pack();
         frame.setVisible(true);
         
-        this.peli.pelaa(kentta, frame.getContentPane());
+        this.peli.aloitaPeli();
     }
     
 }

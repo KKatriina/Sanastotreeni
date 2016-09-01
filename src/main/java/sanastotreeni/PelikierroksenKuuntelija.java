@@ -14,12 +14,12 @@ import javax.swing.JTextArea;
  *
  * @author Katriina
  */
-public class NappaimistonKuuntelija implements ActionListener {
+public class PelikierroksenKuuntelija implements ActionListener {
     private JTextArea sana2;
     private String verrattava;
     private Peli peli;
     
-    public NappaimistonKuuntelija(JTextArea sana2, String verrattava, Peli peli) {
+    public PelikierroksenKuuntelija(JTextArea sana2, String verrattava, Peli peli) {
         this.sana2 = sana2;
         this.verrattava = verrattava;
     }

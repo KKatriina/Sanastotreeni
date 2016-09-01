@@ -16,20 +16,33 @@ class Peli {
     private Pelikierros pelikierros;
     private Pelipakka pelipakka;
     private ArrayList<Sanapari> taysiPakka;
+    private Kentta kentta;
 
     public Peli() {
         this.pelipakka = new Pelipakka();
         this.pelikierros = new Pelikierros(pelipakka);
         this.taysiPakka = new ArrayList<Sanapari>();
+        this.kentta = null;
+    }
+    
+    public void setKentta(Kentta kentta) {
+        this.kentta = kentta;
     }
 
     
-    public void pelaa(Kentta kentta, Container container) {
-        
+    public void aloitaPeli() {
+        kentta.asetaAloitusKentta();
+    }
+    
+    public void pelaa() {
         while (pelipakka.eiTyhja()) {
             Sanapari sp = pelikierros.annaSanapari();
-            kentta.asetaPelikentta(sp, container, this);
+            kentta.asetaPelikentta(sp);
         }
+    }
+    
+    public Pelipakka getPakka() {
+        return this.pelipakka;
     }
     
     
