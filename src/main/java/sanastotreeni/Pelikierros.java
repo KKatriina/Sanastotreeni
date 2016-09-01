@@ -32,7 +32,7 @@ public class Pelikierros {
     //}
     
     public Sanapari annaSanapari() {
-        if (this.valikierroksia%4 != 0) {
+        if (this.valikierroksia == 0 || this.valikierroksia%3 != 0) {
             this.valikierroksia++;
             return this.arvoSanapari();
         } else {
@@ -59,6 +59,7 @@ public class Pelikierros {
     
     //tän joko siirtää väärinmennyt-luokalle tai poistaa koko luokan
     public Sanapari naytaVaarinmennyt() {
+        System.out.println("Ollaan väärinmenneissä!");
         ArrayList<Sanapari> poistettavat = new ArrayList<Sanapari>();
         if (vaarinmenneet.eiTyhja()) {
             for (int i = 0; i < vaarinmenneet.getLista().size(); i++) {

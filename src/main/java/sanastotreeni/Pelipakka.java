@@ -10,10 +10,10 @@ import java.util.*;
  * @author Katriina
  */
 public class Pelipakka {
-    private HashSet pelipakka;
+    private ArrayList<Sanapari> pelipakka;
     
     public Pelipakka() {
-        this.pelipakka = new HashSet();
+        this.pelipakka = new ArrayList<Sanapari>();
     }
     
     public void lisaaSanapari(Sanapari sp) {
@@ -30,12 +30,13 @@ public class Pelipakka {
         }
     }
     
-    public HashSet getPakka() {
+    public ArrayList<Sanapari> getPakka() {
         return this.pelipakka;
     }
     
     
     //öh - tämä ei voi olla pelipakan tehtävä
+    //mutta treenivaiheessa
     public void esittele() {
         
     }

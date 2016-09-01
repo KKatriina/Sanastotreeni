@@ -42,13 +42,23 @@ public class Kentta extends JPanel {
         JTextArea sana2 = new JTextArea();
         JButton nappi1 = new JButton("Lisää sanapari");
         JButton nappi2 = new JButton("Kaikki sanat lisätty!");
-        
+
         nappi1.addActionListener(new LisayksenKuuntelija(sana1, sana2, peli));
-        nappi2.addActionListener(new AloituksestaPoistumisenKuuntelija(peli));
+        nappi2.addActionListener(new AloituksestaPoistumisenKuuntelija(peli));        
+        
+        kentta.add(viesti1);
+        kentta.add(viesti2);
+        kentta.add(sana1);
+        kentta.add(sana2);
+        kentta.add(nappi1);
+        kentta.add(nappi2);
+        
+        container.add(kentta, BorderLayout.NORTH);
     }
     
     public void asetaPelikentta(Sanapari sp) {
-        container.remove(kentta);
+        container.removeAll();
+        kentta.removeAll();
         kentta.setPreferredSize(new Dimension(500, 200));
         GridLayout layout = new GridLayout(2, 2);
         kentta.setLayout(layout);

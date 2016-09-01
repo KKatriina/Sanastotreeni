@@ -19,8 +19,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Sanapari sanapari = new Sanapari("one", "yksi");
-        
+        Sanapari sanapari = new Sanapari("one", "yksi");       
         
         Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
         SwingUtilities.invokeLater(kayttoliittyma);

@@ -35,10 +35,8 @@ class Peli {
     }
     
     public void pelaa() {
-        while (pelipakka.eiTyhja()) {
-            Sanapari sp = pelikierros.annaSanapari();
-            kentta.asetaPelikentta(sp);
-        }
+        Sanapari sp = pelikierros.annaSanapari();
+        kentta.asetaPelikentta(sp);
     }
     
     public Pelipakka getPakka() {
