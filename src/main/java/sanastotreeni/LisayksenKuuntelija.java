@@ -27,7 +27,7 @@ class LisayksenKuuntelija implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Sanapari sp = new Sanapari(sana1.getText(), sana2.getText());
-        peli.getPakka().lisaaSanapari(sp);
+        peli.lisaaSanapari(sp);
         sana1.setText("");
         sana2.setText("");
     }

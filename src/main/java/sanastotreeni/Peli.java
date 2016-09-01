@@ -14,13 +14,11 @@ import java.util.ArrayList;
  */
 class Peli {
     private Pelikierros pelikierros;
-    private Pelipakka pelipakka;
     private ArrayList<Sanapari> taysiPakka;
     private Kentta kentta;
 
     public Peli() {
-        this.pelipakka = new Pelipakka();
-        this.pelikierros = new Pelikierros(pelipakka);
+        this.pelikierros = new Pelikierros();
         this.taysiPakka = new ArrayList<Sanapari>();
         this.kentta = null;
     }
@@ -35,13 +33,36 @@ class Peli {
     }
     
     public void pelaa() {
-        Sanapari sp = pelikierros.annaSanapari();
-        kentta.asetaPelikentta(sp);
+        if (pelikierros.pakkaTyhja()) {
+            lopetaPeli();
+        } else {                 
+            Sanapari sp = pelikierros.annaSanapari();
+            kentta.asetaPelikentta(sp);
+        }
     }
     
-    public Pelipakka getPakka() {
-        return this.pelipakka;
+    public void sanaOikein(Sanapari sanapari) {
+        pelikierros.sanaOikein(sanapari);
+        System.out.println("Oikein!");
+        pelaa();
     }
+    
+    public void sanaVaarin(Sanapari sanapari) {
+        pelikierros.sanaOikein(sanapari);
+        System.out.println("Väärin!");
+        pelaa();
+    }
+    
+    public void lopetaPeli() {
+        System.out.println("Se on loppu ny!");
+    }
+    
+    public void lisaaSanapari(Sanapari sanapari) {
+        this.taysiPakka.add(sanapari);
+        this.pelikierros.lisaaSanapari(sanapari);
+    }
+    
+
     
     
     

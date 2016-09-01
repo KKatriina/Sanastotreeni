@@ -16,20 +16,21 @@ import javax.swing.JTextArea;
  */
 public class PelikierroksenKuuntelija implements ActionListener {
     private JTextArea sana2;
-    private String verrattava;
+    private Sanapari sanapari;
     private Peli peli;
     
-    public PelikierroksenKuuntelija(JTextArea sana2, String verrattava, Peli peli) {
+    public PelikierroksenKuuntelija(JTextArea sana2, Sanapari sanapari, Peli peli) {
         this.sana2 = sana2;
-        this.verrattava = verrattava;
+        this.sanapari = sanapari;
+        this.peli = peli;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (sana2.getText().equals(verrattava)) {
-            System.out.print("Oikein!");
+        if (sana2.getText().equals(sanapari.getSana2())) {
+            peli.sanaOikein(this.sanapari);
         } else {
-            System.out.print("Väärin!");
+            peli.sanaVaarin(this.sanapari);
         }
     }
     

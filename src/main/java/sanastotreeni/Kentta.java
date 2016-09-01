@@ -67,7 +67,7 @@ public class Kentta extends JPanel {
         JLabel sana1 = new JLabel(sp.getSana1());
         JTextArea sana2 = new JTextArea();
         JButton nappi = new JButton("OK!");
-        nappi.addActionListener(new PelikierroksenKuuntelija(sana2, sp.getSana2(), peli));
+        nappi.addActionListener(new PelikierroksenKuuntelija(sana2, sp, peli));
         
         kentta.add(viesti);
         kentta.add(nappi);
