@@ -12,16 +12,16 @@ import java.awt.event.ActionListener;
  *
  * @author Katriina
  */
-class AloituksestaPoistumisenKuuntelija implements ActionListener {
+class PelinAloittamisenKuuntelija implements ActionListener {
     private Peli peli;
 
-    public AloituksestaPoistumisenKuuntelija(Peli peli) {
+    public PelinAloittamisenKuuntelija(Peli peli) {
         this.peli = peli;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        peli.pelaa();
+        peli.pelaa("Aloitetaan pelaaminen!");
     }
     
 }

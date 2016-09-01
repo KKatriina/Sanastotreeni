@@ -45,9 +45,13 @@ public class Pelikierros {
     }
     
     public Sanapari arvoSanapari() {
-        Random random = new Random();
-        int i = random.nextInt(pelipakka.size());
-        return pelipakka.get(i);
+        if (this.pelipakka.isEmpty()) {
+            return annaVaarinmennyt();
+        } else {
+            Random random = new Random();
+            int i = random.nextInt(pelipakka.size());
+            return pelipakka.get(i);
+        }
     }
     
     public Sanapari annaVaarinmennyt() {

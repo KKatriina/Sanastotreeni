@@ -28,34 +28,35 @@ class Peli {
     }
 
     
-    public void aloitaPeli() {
+    public void aloita() {
         kentta.asetaAloitusKentta();
     }
     
-    public void pelaa() {
+    public void aloitaLisaaminen() {
+        kentta.asetaLisaysKentta();
+    }
+    
+    public void pelaa(String palaute) {
         if (pelikierros.pakkaTyhja()) {
             lopetaPeli();
         } else {                 
             Sanapari sp = pelikierros.annaSanapari();
-            System.out.println("sanapari annettu");
-            kentta.asetaPelikentta(sp);
+            kentta.asetaPelikentta(sp, palaute);
         }
     }
     
     public void sanaOikein(Sanapari sanapari) {
         pelikierros.sanaOikein(sanapari);
-        System.out.println("Oikein!");
-        pelaa();
+        pelaa("Oikein meni!");
     }
     
     public void sanaVaarin(Sanapari sanapari) {
-        pelikierros.sanaOikein(sanapari);
-        System.out.println("Väärin!");
-        pelaa();
+        pelikierros.sanaVaarin(sanapari);
+        pelaa("Oikea vastaus: " + sanapari.getSana1()+ " = " + sanapari.getSana2());
     }
     
     public void lopetaPeli() {
-        System.out.println("Se on loppu ny!");
+        kentta.asetaLoppuKentta(taysiPakka);
     }
     
     public void lisaaSanapari(Sanapari sanapari) {

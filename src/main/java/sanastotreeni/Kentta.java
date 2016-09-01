@@ -6,15 +6,20 @@
 package sanastotreeni;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.text.JTextComponent;
 
 /**
  *
@@ -33,6 +38,28 @@ public class Kentta extends JPanel {
     }
     
     public void asetaAloitusKentta() {
+        kentta.setPreferredSize(new Dimension(500,200));
+        GridLayout layout = new GridLayout(2,1);
+        kentta.setLayout(layout);
+        JLabel viesti = new JLabel("Tervetuloa vänskään sanapeliin!");
+        
+        kentta.add(viesti);
+        
+        JPanel paneeli = new JPanel(new GridLayout(1,2));
+        JButton nappi1 = new JButton("Tee oma sanalista");
+        JButton nappi2 = new JButton("Valitse valmis lista");
+        nappi1.addActionListener(new LisayksenAloittamisenKuuntelija(peli));
+        paneeli.add(nappi1);
+        paneeli.add(nappi2);
+    
+        kentta.add(paneeli);
+        container.add(kentta, BorderLayout.NORTH);
+        kentta.validate();
+        container.validate();
+    }
+    
+    public void asetaLisaysKentta() {
+        kentta.removeAll();
         kentta.setPreferredSize(new Dimension(500, 200));
         GridLayout layout = new GridLayout(3,2);
         kentta.setLayout(layout);
@@ -45,7 +72,7 @@ public class Kentta extends JPanel {
         JButton nappi2 = new JButton("Kaikki sanat lisätty!");
 
         nappi1.addActionListener(new LisayksenKuuntelija(sana1, sana2, peli));
-        nappi2.addActionListener(new AloituksestaPoistumisenKuuntelija(peli));        
+        nappi2.addActionListener(new PelinAloittamisenKuuntelija(peli));        
         
         kentta.add(viesti1);
         kentta.add(viesti2);
@@ -55,32 +82,62 @@ public class Kentta extends JPanel {
         kentta.add(nappi2);
         
         container.add(kentta, BorderLayout.NORTH);
+        kentta.validate();
+        container.validate();
     }
     
-    public void asetaPelikentta(Sanapari sp) {
+    public void asetaPelikentta(Sanapari sp, String palaute) {
         //container.removeAll();
-        System.out.println("mentiin kentälle");
         kentta.removeAll();
-        System.out.println("poistettiin kaikki vanha");
         kentta.setPreferredSize(new Dimension(500, 200));
-        GridLayout layout = new GridLayout(2, 2);
+        GridLayout layout = new GridLayout(4, 2);
         kentta.setLayout(layout);
         
-        JLabel viesti = new JLabel("Käännä annettu sana!");
+        JLabel palauteviesti = new JLabel(palaute);
+        JLabel vali1 = new JLabel();
+        JLabel vali2 = new JLabel();
+        JLabel vali3 = new JLabel();
+        JLabel viesti = new JLabel("Kirjoita annetun sanan käännös:");
         JLabel sana1 = new JLabel(sp.getSana1());
         JTextArea sana2 = new JTextArea();
         JButton nappi = new JButton("OK!");
         nappi.addActionListener(new PelikierroksenKuuntelija(sana2, sp, peli));
         
+        kentta.add(palauteviesti);
+        kentta.add(vali1);
         kentta.add(viesti);
-        kentta.add(nappi);
+        kentta.add(vali2);
         kentta.add(sana1);
         kentta.add(sana2);
-        
+        kentta.add(vali3);
+        kentta.add(nappi);
         container.add(kentta, BorderLayout.NORTH);
-        System.out.println("lisättiin uutta");
-        //kentta.repaint();
-        //container.repaint();
+        kentta.validate();
+        container.validate();
+    }
+
+    public void asetaLoppuKentta(ArrayList<Sanapari> taysiPakka) {
+        kentta.removeAll();
+        kentta.setPreferredSize(new Dimension(500, 200));
+        kentta.setLayout(new BoxLayout(kentta, BoxLayout.Y_AXIS));
+        JLabel viesti1 = new JLabel("Peli loppu!");
+        JLabel viesti2 = new JLabel("Tässä kertauksena kaikki sanat:");
+        kentta.add(viesti1);
+        kentta.add(viesti2);
+        
+        for (int i = 0; i < taysiPakka.size(); i++) {
+            Sanapari sp = taysiPakka.get(i);
+            JLabel viesti = new JLabel(sp.toString());
+            System.out.println(sp.toString());
+            if (sp.virheellinen()) {
+                viesti.setBackground(Color.red);
+                System.out.println("Punaista pitäis olla!");
+            }
+            kentta.add(viesti);
+        }
+        
+        JLabel viesti3 = new JLabel("Kiitos ja kuulemiin!");
+        kentta.add(viesti3);
         kentta.validate();
         container.validate();
     }
