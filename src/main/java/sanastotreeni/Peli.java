@@ -6,6 +6,7 @@
 package sanastotreeni;
 
 import java.awt.Container;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -28,7 +29,6 @@ class Peli {
     public void setKentta(Kentta kentta) {
         this.kentta = kentta;
     }
-
     
     public void aloita(String palaute) {
         kentta.asetaAloitusKentta(palaute);
@@ -78,6 +78,15 @@ class Peli {
             }
             pelaa("Aloitetaan peli!");
         }
+    }
+
+    public void kysyTallentamista() {
+        kentta.kysyTallentamista();
+    }
+
+    public void tallenna() throws IOException {
+        tk.tallenna(taysiPakka);
+        pelaa("Sanasto tallennettu!");
     }
     
 

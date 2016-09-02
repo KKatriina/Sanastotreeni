@@ -1,1 +1,2 @@
-
+yksi=1
+kaksi=2

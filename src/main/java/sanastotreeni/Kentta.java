@@ -31,6 +31,8 @@ public class Kentta extends JPanel {
     private Peli peli;
     
     
+    //tän luokan copypastelle tee joskus jotain
+    
     public Kentta(Container container, Peli peli) {
         this.kentta = new JPanel();
         this.container = container;
@@ -76,7 +78,7 @@ public class Kentta extends JPanel {
         JButton nappi2 = new JButton("Kaikki sanat lisätty!");
 
         nappi1.addActionListener(new LisayksenKuuntelija(sana1, sana2, peli));
-        nappi2.addActionListener(new PelinAloittamisenKuuntelija(peli));        
+        nappi2.addActionListener(new LisayksenLopettamisenKuuntelija(peli));        
         
         kentta.add(viesti1);
         kentta.add(viesti2);
@@ -142,6 +144,27 @@ public class Kentta extends JPanel {
         
         JLabel viesti3 = new JLabel("Kiitos ja kuulemiin!");
         kentta.add(viesti3);
+        kentta.validate();
+        container.validate();
+    }
+
+    public void kysyTallentamista() {
+        kentta.removeAll();
+        kentta.setPreferredSize(new Dimension(500, 200));
+        GridLayout layout = new GridLayout(2, 2);
+        kentta.setLayout(layout);
+        
+        JLabel viesti1 = new JLabel("Tallennetaanko sanalista muistiin?");
+        JLabel viesti2 = new JLabel("");
+        JButton nappi1 = new JButton("Ei, pelataan vain!");
+        JButton nappi2 = new JButton("Tallennetaan!");
+        nappi1.addActionListener(new PelinAloittamisenKuuntelija(peli));
+        nappi2.addActionListener(new TallentamisenKuuntelija(peli));
+        
+        kentta.add(viesti1);
+        kentta.add(viesti2);
+        kentta.add(nappi1);
+        kentta.add(nappi2);
         kentta.validate();
         container.validate();
     }
