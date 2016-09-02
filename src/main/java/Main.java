@@ -10,6 +10,7 @@
  *
  * @author Katriina
  */
+import java.util.Scanner;
 import sanastotreeni.*;
 import javax.swing.SwingUtilities;
 
@@ -18,8 +19,8 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        Sanapari sanapari = new Sanapari("one", "yksi");       
+    public static void main(String[] args) {   
+        Scanner lukija = new Scanner("sanasto.text");
         
         Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
         SwingUtilities.invokeLater(kayttoliittyma);
