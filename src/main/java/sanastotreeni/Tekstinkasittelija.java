@@ -22,16 +22,16 @@ public class Tekstinkasittelija {
     }
     
     public void tallenna(ArrayList<Sanapari> pakka) throws IOException {
-        FileWriter kirjoittaja = new FileWriter("sanasto.txt");
+        FileWriter kirjoittaja = new FileWriter("tiedosto.txt");
         for (int i = 0; i < pakka.size(); i++) {
             Sanapari sp = pakka.get(i);
             kirjoittaja.write(sp.getSana1() + "=" + sp.getSana2() + "\n");
         }
+        kirjoittaja.close();
     }
     
-    public ArrayList<Sanapari> lueSanasto() {
-        ArrayList<Sanapari> pakka = new ArrayList<Sanapari>();
-        File sanasto = new File("sanasto.txt");
+    public ArrayList<Sanapari> lueSanasto() { 
+        File sanasto = new File("tiedosto.txt");
         Scanner scanner = null;
         
         try {
@@ -40,6 +40,8 @@ public class Tekstinkasittelija {
             System.out.println("Tiedostoa ei voi lukea");
         }
         
+        ArrayList<Sanapari> pakka = new ArrayList<Sanapari>();
+
         while (scanner.hasNextLine()) {
             String rivi = scanner.nextLine();
             String[] sanat = rivi.split("=");
@@ -48,5 +50,22 @@ public class Tekstinkasittelija {
         }
         
         return pakka;
+    }
+    
+    public boolean tiedostoTyhja() {
+        File sanasto = new File("tiedosto.txt");
+        Scanner scanner = null;
+        
+        try {
+            scanner = new Scanner(sanasto);
+        } catch (Exception e) {
+            System.out.println("Tiedostoa ei voi lukea");
+        }
+        
+        String koe = "";
+        while (scanner.hasNextLine()) {
+            koe = koe + scanner.nextLine();
+        }
+        return koe.isEmpty();
     }
 }

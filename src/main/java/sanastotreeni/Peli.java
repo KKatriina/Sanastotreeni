@@ -16,11 +16,13 @@ class Peli {
     private Pelikierros pelikierros;
     private ArrayList<Sanapari> taysiPakka;
     private Kentta kentta;
+    private Tekstinkasittelija tk;
 
     public Peli() {
         this.pelikierros = new Pelikierros();
         this.taysiPakka = new ArrayList<Sanapari>();
         this.kentta = null;
+        this.tk = new Tekstinkasittelija();
     }
     
     public void setKentta(Kentta kentta) {
@@ -28,8 +30,8 @@ class Peli {
     }
 
     
-    public void aloita() {
-        kentta.asetaAloitusKentta();
+    public void aloita(String palaute) {
+        kentta.asetaAloitusKentta(palaute);
     }
     
     public void aloitaLisaaminen() {
@@ -60,8 +62,22 @@ class Peli {
     }
     
     public void lisaaSanapari(Sanapari sanapari) {
-        this.taysiPakka.add(sanapari);
-        this.pelikierros.lisaaSanapari(sanapari);
+        taysiPakka.add(sanapari);
+        pelikierros.lisaaSanapari(sanapari);
+    }
+
+    public void valitaanTallennettu() {
+        if (tk.tiedostoTyhja()) {
+            aloita("Sanastoa ei ole tallennettu");
+        } else {
+            System.out.println("valitaan tallennettu");
+            taysiPakka = tk.lueSanasto();
+            for (int i = 0; i < taysiPakka.size(); i++) {
+                pelikierros.lisaaSanapari(taysiPakka.get(i));
+                System.out.println(taysiPakka.get(i).toString());
+            }
+            pelaa("Aloitetaan peli!");
+        }
     }
     
 

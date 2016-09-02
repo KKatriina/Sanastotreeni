@@ -37,18 +37,22 @@ public class Kentta extends JPanel {
         this.peli = peli;
     }
     
-    public void asetaAloitusKentta() {
+    public void asetaAloitusKentta(String palaute) {
+        kentta.removeAll();
         kentta.setPreferredSize(new Dimension(500,200));
-        GridLayout layout = new GridLayout(2,1);
+        GridLayout layout = new GridLayout(3,1);
         kentta.setLayout(layout);
         JLabel viesti = new JLabel("Tervetuloa vänskään sanapeliin!");
+        JLabel viesti2 = new JLabel(palaute);
         
         kentta.add(viesti);
+        kentta.add(viesti2);
         
         JPanel paneeli = new JPanel(new GridLayout(1,2));
-        JButton nappi1 = new JButton("Tee oma sanalista");
-        JButton nappi2 = new JButton("Valitse valmis lista");
+        JButton nappi1 = new JButton("Tee uusi sanalista");
+        JButton nappi2 = new JButton("Kysy tallennetulta listalta");
         nappi1.addActionListener(new LisayksenAloittamisenKuuntelija(peli));
+        nappi2.addActionListener(new TallennetunValitsemisenKuuntelija(peli));
         paneeli.add(nappi1);
         paneeli.add(nappi2);
     
