@@ -31,8 +31,8 @@ public class Sanapari {
     }
     
     public void vaarin() {
-        this.painokerroin++;
-        this.virheellinen = true;
+        painokerroin++;
+        virheellinen = true;
     }
     
     public void oikein() {
@@ -52,6 +52,6 @@ public class Sanapari {
     
     @Override
     public String toString() {
-        return sana1 + " = " + sana2;
+        return sana1 + " = " + sana2 + " ";
     }
 }

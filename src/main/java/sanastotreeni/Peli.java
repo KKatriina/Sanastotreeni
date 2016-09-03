@@ -35,6 +35,7 @@ class Peli {
     }
     
     public void aloitaLisaaminen() {
+        this.tk = new Tekstinkasittelija();
         kentta.asetaLisaysKentta();
     }
     
@@ -70,14 +71,17 @@ class Peli {
         if (tk.tiedostoTyhja()) {
             aloita("Sanastoa ei ole tallennettu");
         } else {
-            System.out.println("valitaan tallennettu");
             taysiPakka = tk.lueSanasto();
-            for (int i = 0; i < taysiPakka.size(); i++) {
-                pelikierros.lisaaSanapari(taysiPakka.get(i));
-                System.out.println(taysiPakka.get(i).toString());
-            }
-            pelaa("Aloitetaan peli!");
+            kaytaValmistaPakkaa();
         }
+    }
+    
+    public void kaytaValmistaPakkaa() {
+        for (int i = 0; i < taysiPakka.size(); i++) {
+            pelikierros.lisaaSanapari(taysiPakka.get(i));
+            System.out.println(taysiPakka.get(i).toString());
+        }
+        pelaa("Aloitetaan peli!");    
     }
 
     public void kysyTallentamista() {
@@ -87,6 +91,12 @@ class Peli {
     public void tallenna() throws IOException {
         tk.tallenna(taysiPakka);
         pelaa("Sanasto tallennettu!");
+    }
+
+    public void aloitaUusiKierros(ArrayList<Sanapari> taysiPakka) {
+        this.taysiPakka = taysiPakka;
+        this.pelikierros = new Pelikierros();
+        kaytaValmistaPakkaa();
     }
     
 

@@ -7,6 +7,7 @@ package sanastotreeni;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,14 +15,20 @@ import java.awt.event.ActionListener;
  */
 class PelinAloittamisenKuuntelija implements ActionListener {
     private Peli peli;
+    private ArrayList<Sanapari> taysiPakka;
 
-    public PelinAloittamisenKuuntelija(Peli peli) {
+    public PelinAloittamisenKuuntelija(Peli peli, ArrayList<Sanapari> taysiPakka) {
         this.peli = peli;
+        this.taysiPakka = taysiPakka;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        peli.pelaa("Aloitetaan pelaaminen!");
+        if (taysiPakka == null) {
+            peli.pelaa("Aloitetaan pelaaminen!");
+        } else {
+            peli.aloitaUusiKierros(taysiPakka);
+        }
     }
     
 }

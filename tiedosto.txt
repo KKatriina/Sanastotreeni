@@ -1,2 +1,2 @@
 yksi=1
-kaksi=2
+kissa=cat
