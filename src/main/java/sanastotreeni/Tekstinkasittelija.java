@@ -5,6 +5,7 @@
  */
 package sanastotreeni;
 
+import domain.Sanapari;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,16 +19,15 @@ import java.util.Scanner;
 public class Tekstinkasittelija {
     
     public Tekstinkasittelija() {
-
     }
     
     public void tallenna(ArrayList<Sanapari> pakka) throws IOException {
-        FileWriter kirjoittaja = new FileWriter("tiedosto.txt");
-        for (int i = 0; i < pakka.size(); i++) {
-            Sanapari sp = pakka.get(i);
-            kirjoittaja.write(sp.getSana1() + "=" + sp.getSana2() + "\n");
+        try (FileWriter kirjoittaja = new FileWriter("tiedosto.txt")) {
+            for (int i = 0; i < pakka.size(); i++) {
+                Sanapari sp = pakka.get(i);
+                kirjoittaja.write(sp.getSana1() + "=" + sp.getSana2() + "\n");
+            }
         }
-        kirjoittaja.close();
     }
     
     public ArrayList<Sanapari> lueSanasto() { 
@@ -40,7 +40,7 @@ public class Tekstinkasittelija {
             System.out.println("Tiedostoa ei voi lukea");
         }
         
-        ArrayList<Sanapari> pakka = new ArrayList<Sanapari>();
+        ArrayList<Sanapari> pakka = new ArrayList<>();
 
         while (scanner.hasNextLine()) {
             String rivi = scanner.nextLine();
