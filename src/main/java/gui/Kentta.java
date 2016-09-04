@@ -114,15 +114,25 @@ public class Kentta extends JPanel {
     public void asetaLoppuKentta(ArrayList<Sanapari> taysiPakka) {
         container.removeAll();
         kentta.removeAll();
+        int kenttia = 0;
         kentta.setPreferredSize(new Dimension(500, 200));
-        int riveja = (taysiPakka.size() / 3) + 2;
+        int riveja = 0;
+        if (taysiPakka.size()%3 == 0) {
+            riveja = (taysiPakka.size()/3) + 2;
+        } else {
+            riveja = (taysiPakka.size()/3) + 3;
+        }
+        System.out.println("rivejä: " + riveja);
         int indeksi = 0;
         GridLayout layout = new GridLayout(riveja, 3);
         kentta.setLayout(layout);
         
         kentta.add(new JLabel("Peli loppu!"));
+        kenttia++;
         kentta.add(new JLabel("Punaisissa virheitä:"));
+        kenttia++;
         kentta.add(new JLabel());
+        kenttia++;
         
         for (int i = 0; i < taysiPakka.size(); i++) {
             Sanapari sp = taysiPakka.get(i);
@@ -131,13 +141,17 @@ public class Kentta extends JPanel {
                 viesti.setForeground(Color.red);
             }
             kentta.add(viesti);
+            kenttia++;
             indeksi++;
         }
         if (taysiPakka.size()%riveja == 2) {
             kentta.add(new JLabel());
+            kenttia++;
         } else if (taysiPakka.size()%riveja == 1) {
             kentta.add(new JLabel());
+            kenttia++;
             kentta.add(new JLabel());
+            kenttia++;
         }
         
         JButton nappi1 = new JButton("Lisää uusi sanasto");
@@ -145,8 +159,12 @@ public class Kentta extends JPanel {
         nappi1.addActionListener(new LisayksenAloittamisenKuuntelija(peli));
         nappi2.addActionListener(new PelinAloittamisenKuuntelija(peli, taysiPakka));
         kentta.add(new JLabel("Kiitos ja kuulemiin!"));
+        kenttia++;
         kentta.add(nappi1);
+        kenttia++;
         kentta.add(nappi2);
+        kenttia++;
+        System.out.println("kenttia: " + kenttia);
         
         container.add(kentta, BorderLayout.NORTH);
         kentta.validate();

@@ -51,4 +51,8 @@ public class Sanapari {
     public String toString() {
         return sana1 + " = " + sana2;
     }
+
+    public void asetaOikeinMenneeksi() {
+        this.virheellinen = false;
+    }
 }

@@ -97,6 +97,9 @@ public class Peli {
 
     public void aloitaUusiKierros(ArrayList<Sanapari> taysiPakka) {
         this.taysiPakka = taysiPakka;
+        for (Sanapari sp : taysiPakka) {
+            sp.asetaOikeinMenneeksi();
+        }
         this.pelikierros = new Pelikierros();
         kaytaValmistaPakkaa();
     }
