@@ -15,7 +15,7 @@ import domain.Sanapari;
  *
  * @author Katriina
  */
-class PelinAloittamisenKuuntelija implements ActionListener {
+public class PelinAloittamisenKuuntelija implements ActionListener {
     private Peli peli;
     private ArrayList<Sanapari> taysiPakka;
 

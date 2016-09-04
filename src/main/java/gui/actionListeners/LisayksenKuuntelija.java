@@ -15,7 +15,7 @@ import domain.Sanapari;
  *
  * @author Katriina
  */
-class LisayksenKuuntelija implements ActionListener {
+public class LisayksenKuuntelija implements ActionListener {
     private JTextArea sana1;
     private JTextArea sana2;
     private Peli peli;

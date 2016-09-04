@@ -117,17 +117,16 @@ public class Kentta extends JPanel {
         kentta.setPreferredSize(new Dimension(500, 200));
         int riveja = (taysiPakka.size() / 3) + 2;
         int indeksi = 0;
-        GridLayout layout = new GridLayout(3, riveja);
+        GridLayout layout = new GridLayout(riveja, 3);
         kentta.setLayout(layout);
         
         kentta.add(new JLabel("Peli loppu!"));
-        kentta.add(new JLabel("Punaisissa haksahduksia:"));
-        kentta.add(new JLabel(""));
+        kentta.add(new JLabel("Punaisissa virheitä:"));
+        kentta.add(new JLabel());
         
         for (int i = 0; i < taysiPakka.size(); i++) {
             Sanapari sp = taysiPakka.get(i);
             JLabel viesti = new JLabel(sp.toString());
-            System.out.println(sp.toString());
             if (sp.virheellinen()) {
                 viesti.setForeground(Color.red);
             }

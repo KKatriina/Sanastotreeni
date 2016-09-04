@@ -16,7 +16,7 @@ import domain.Peli;
  *
  * @author Katriina
  */
-class TallentamisenKuuntelija implements ActionListener {
+public class TallentamisenKuuntelija implements ActionListener {
     private Peli peli;
 
     public TallentamisenKuuntelija(Peli peli) {

@@ -15,7 +15,7 @@ import sanastotreeni.Tekstinkasittelija;
  *
  * @author Katriina
  */
-class Peli {
+public class Peli {
     private Pelikierros pelikierros;
     private ArrayList<Sanapari> taysiPakka;
     private Kentta kentta;
@@ -37,7 +37,7 @@ class Peli {
     }
     
     public void aloitaLisaaminen() {
-        this.tk = new Tekstinkasittelija();
+        this.taysiPakka = new ArrayList<>();
         kentta.asetaLisaysKentta();
     }
     
@@ -102,7 +102,4 @@ class Peli {
     }
     
 
-    
-    
-    
 }

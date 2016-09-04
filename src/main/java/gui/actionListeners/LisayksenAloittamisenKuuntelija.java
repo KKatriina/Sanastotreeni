@@ -13,7 +13,7 @@ import domain.Peli;
  *
  * @author Katriina
  */
-class LisayksenAloittamisenKuuntelija implements ActionListener {
+public class LisayksenAloittamisenKuuntelija implements ActionListener {
     private Peli peli;
 
     public LisayksenAloittamisenKuuntelija(Peli peli) {

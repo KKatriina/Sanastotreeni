@@ -22,12 +22,12 @@ public class Tekstinkasittelija {
     }
     
     public void tallenna(ArrayList<Sanapari> pakka) throws IOException {
-        try (FileWriter kirjoittaja = new FileWriter("tiedosto.txt")) {
-            for (int i = 0; i < pakka.size(); i++) {
-                Sanapari sp = pakka.get(i);
-                kirjoittaja.write(sp.getSana1() + "=" + sp.getSana2() + "\n");
-            }
+        FileWriter kirjoittaja = new FileWriter("tiedosto.txt", false);
+        for (int i = 0; i < pakka.size(); i++) {
+            Sanapari sp = pakka.get(i);
+            kirjoittaja.write(sp.getSana1() + "=" + sp.getSana2() + "\n");
         }
+        kirjoittaja.close();
     }
     
     public ArrayList<Sanapari> lueSanasto() { 
