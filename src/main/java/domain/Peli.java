@@ -9,6 +9,7 @@ import domain.Pelikierros;
 import gui.Kentta;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.JTextArea;
 import sanastotreeni.Tekstinkasittelija;
 
 /**
@@ -38,7 +39,7 @@ public class Peli {
     
     public void aloitaLisaaminen() {
         this.taysiPakka = new ArrayList<>();
-        kentta.asetaLisaysKentta();
+        kentta.asetaLisaysKentta("Lisää uusi sanapari");
     }
     
     public void pelaa(String palaute) {
@@ -67,6 +68,16 @@ public class Peli {
     public void lisaaSanapari(Sanapari sanapari) {
         taysiPakka.add(sanapari);
         pelikierros.lisaaSanapari(sanapari);
+    }
+    
+    public boolean SanaOnJoSanastossa(String sana1) {
+        boolean palautettava = false;
+        for (Sanapari sp : taysiPakka) {
+            if (sp.getSana1().equals(sana1)) {
+                palautettava = true;
+            }
+        }
+        return palautettava;
     }
 
     public void valitaanTallennettu() {
@@ -102,6 +113,10 @@ public class Peli {
         }
         this.pelikierros = new Pelikierros();
         kaytaValmistaPakkaa();
+    }
+
+    public boolean onJoSanastossa(JTextArea sana1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 

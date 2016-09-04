@@ -65,12 +65,15 @@ public class Kentta extends JPanel {
         container.validate();
     }
     
-    public void asetaLisaysKentta() {
+    public void asetaLisaysKentta(String palaute) {
         kentta.removeAll();
         kentta.setPreferredSize(new Dimension(500, 200));
-        GridLayout layout = new GridLayout(3,2);
+        GridLayout layout = new GridLayout(4,2);
         kentta.setLayout(layout);
         
+        JLabel palautekentta = new JLabel(palaute);
+        kentta.add(palautekentta);
+        kentta.add(new JLabel());
         kentta.add(new JLabel("Sana:"));
         kentta.add(new JLabel("Käännös:"));
         JTextArea sana1= new JTextArea();
@@ -78,8 +81,8 @@ public class Kentta extends JPanel {
         kentta.add(sana1);
         kentta.add(sana2);
         JButton nappi1 = new JButton("Lisää sanapari");
-        JButton nappi2 = new JButton("Kaikki sanat lisätty!");
-        nappi1.addActionListener(new LisayksenKuuntelija(sana1, sana2, peli));
+        JButton nappi2 = new JButton("Lopeta lisääminen");
+        nappi1.addActionListener(new LisayksenKuuntelija(sana1, sana2, palautekentta, peli));
         nappi2.addActionListener(new LisayksenLopettamisenKuuntelija(peli));        
         kentta.add(nappi1);
         kentta.add(nappi2);
@@ -114,7 +117,6 @@ public class Kentta extends JPanel {
     public void asetaLoppuKentta(ArrayList<Sanapari> taysiPakka) {
         container.removeAll();
         kentta.removeAll();
-        int kenttia = 0;
         kentta.setPreferredSize(new Dimension(500, 200));
         int riveja = 0;
         if (taysiPakka.size()%3 == 0) {
@@ -128,11 +130,8 @@ public class Kentta extends JPanel {
         kentta.setLayout(layout);
         
         kentta.add(new JLabel("Peli loppu!"));
-        kenttia++;
         kentta.add(new JLabel("Punaisissa virheitä:"));
-        kenttia++;
         kentta.add(new JLabel());
-        kenttia++;
         
         for (int i = 0; i < taysiPakka.size(); i++) {
             Sanapari sp = taysiPakka.get(i);
@@ -141,17 +140,13 @@ public class Kentta extends JPanel {
                 viesti.setForeground(Color.red);
             }
             kentta.add(viesti);
-            kenttia++;
             indeksi++;
         }
         if (taysiPakka.size()%riveja == 2) {
             kentta.add(new JLabel());
-            kenttia++;
         } else if (taysiPakka.size()%riveja == 1) {
             kentta.add(new JLabel());
-            kenttia++;
             kentta.add(new JLabel());
-            kenttia++;
         }
         
         JButton nappi1 = new JButton("Lisää uusi sanasto");
@@ -159,12 +154,8 @@ public class Kentta extends JPanel {
         nappi1.addActionListener(new LisayksenAloittamisenKuuntelija(peli));
         nappi2.addActionListener(new PelinAloittamisenKuuntelija(peli, taysiPakka));
         kentta.add(new JLabel("Kiitos ja kuulemiin!"));
-        kenttia++;
         kentta.add(nappi1);
-        kenttia++;
         kentta.add(nappi2);
-        kenttia++;
-        System.out.println("kenttia: " + kenttia);
         
         container.add(kentta, BorderLayout.NORTH);
         kentta.validate();
