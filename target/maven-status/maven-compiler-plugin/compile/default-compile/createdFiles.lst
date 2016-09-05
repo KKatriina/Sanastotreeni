@@ -1,0 +1,14 @@
+domain\Peli.class
+gui\actionListeners\TallennetunValitsemisenKuuntelija.class
+sanastotreeni\Main.class
+domain\Pelikierros.class
+sanastotreeni\Tekstinkasittelija.class
+gui\actionListeners\LisayksenLopettamisenKuuntelija.class
+domain\Sanapari.class
+gui\actionListeners\LisayksenAloittamisenKuuntelija.class
+gui\actionListeners\PelinAloittamisenKuuntelija.class
+gui\Kayttoliittyma.class
+gui\actionListeners\LisayksenKuuntelija.class
+gui\actionListeners\PelikierroksenKuuntelija.class
+gui\actionListeners\TallentamisenKuuntelija.class
+gui\Kentta.class
