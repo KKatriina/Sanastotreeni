@@ -14,15 +14,13 @@ package sanastotreeni;
  */
 import gui.Kayttoliittyma;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
-import sanastotreeni.*;
 import javax.swing.SwingUtilities;
 
 public class Main {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {   
         Kayttoliittyma kayttoliittyma = new Kayttoliittyma();

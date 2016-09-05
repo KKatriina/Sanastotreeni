@@ -5,15 +5,9 @@
  */
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.GridLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 import domain.Peli;
 
@@ -21,8 +15,7 @@ import domain.Peli;
  *
  * @author Katriina
  */
-public class Kayttoliittyma implements Runnable {
-    
+public class Kayttoliittyma implements Runnable {  
     private JFrame frame;
     private Kentta kentta;
     private Peli peli;

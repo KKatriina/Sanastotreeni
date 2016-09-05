@@ -34,9 +34,6 @@ public class Kentta extends JPanel {
     private Container container;
     private Peli peli;
     
-    
-    //tän luokan copypastelle tee joskus jotain
-    
     public Kentta(Container container, Peli peli) {
         this.kentta = new JPanel();
         this.container = container;
@@ -124,7 +121,6 @@ public class Kentta extends JPanel {
         } else {
             riveja = (taysiPakka.size()/3) + 3;
         }
-        System.out.println("rivejä: " + riveja);
         int indeksi = 0;
         GridLayout layout = new GridLayout(riveja, 3);
         kentta.setLayout(layout);
@@ -142,9 +138,9 @@ public class Kentta extends JPanel {
             kentta.add(viesti);
             indeksi++;
         }
-        if (taysiPakka.size()%riveja == 2) {
+        if (taysiPakka.size()%3 == 2) {
             kentta.add(new JLabel());
-        } else if (taysiPakka.size()%riveja == 1) {
+        } else if (taysiPakka.size()%3 == 1) {
             kentta.add(new JLabel());
             kentta.add(new JLabel());
         }

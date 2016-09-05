@@ -5,11 +5,9 @@
  */
 package domain;
 
-import domain.Pelikierros;
 import gui.Kentta;
 import java.io.IOException;
 import java.util.ArrayList;
-import javax.swing.JTextArea;
 import sanastotreeni.Tekstinkasittelija;
 
 /**
@@ -113,11 +111,6 @@ public class Peli {
         }
         this.pelikierros = new Pelikierros();
         kaytaValmistaPakkaa();
-    }
-
-    public boolean onJoSanastossa(JTextArea sana1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    }    
 
 }

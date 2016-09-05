@@ -44,9 +44,6 @@ public class Pelikierros {
             this.kysytaanVaarinmenneita = false;
             Random random = new Random();
             int i = random.nextInt(pelipakka.size());
-            System.out.println("Annetaan pelipakasta:");
-            System.out.println("vaarinmennyt: " + kysytaanVaarinmenneita);
-            System.out.println("sanapari: " + this.pelipakka.get(i).toString());
             return pelipakka.get(i);
         }
     }
@@ -62,9 +59,6 @@ public class Pelikierros {
             this.kysytaanVaarinmenneita = false;
             return arvoSanapari();
         } else {
-            System.out.println("annetaan väärinmennyt indeksista " + indeksi);
-            System.out.println("vaarinmennyt: " + kysytaanVaarinmenneita);
-            System.out.println("sanapari :" + this.vaarinmenneet.get(indeksi).toString());
             return this.vaarinmenneet.get(indeksi);
         }
     }
